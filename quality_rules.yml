@@ -1,0 +1,13 @@
+rules:
+  - label: missing_artist
+    condition: artist IS NULL OR trim(artist) = ''
+  - label: featuring_artist
+    condition: >-
+      regexp_matches(coalesce(artist, '') || ' ' || _title,
+      '(?i)(\bfeat(?:uring)?\b|\bft\b|피처링|피쳐링)')
+  - label: multiple_artists
+    condition: >-
+      artist NOT IN (SELECT artist FROM artist_list)
+      AND regexp_matches(artist, '(?i)([,;&/+×]|\s+(x|and|with)\s+)')
+  - label: artist_not_listed
+    condition: artist NOT IN (SELECT artist FROM artist_list)
