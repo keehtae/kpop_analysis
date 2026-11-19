@@ -1,2 +1,4 @@
 data/*.duckdb
 data/*.duckdb.wal
+__pycache__/
+*.pyc
