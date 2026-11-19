@@ -1,0 +1,70 @@
+{
+  "reviewed_on": "2026-09-14",
+  "policy": "Count distinct artist + title per group from distribution_agency credits across all chart years. Genie/Stone is an analytical alliance, not a claim that CJ owns Genie. Direct recorded credits take precedence over general artist partnerships. International agreements require evidence covering the recording, territory and period; no blanket Sony/Warner/Universal reassignment. Songs can appear in multiple groups across historical credits. Unmapped credits are excluded only from this chart, never deleted from the CSV.",
+  "groups": {
+    "Kakao Entertainment": {
+      "credits": [
+        "Kakao Entertainment"
+      ],
+      "sources": [
+        "https://newsroom.kakaoent.com/news/kakao-entertainment-accelerates-global-expansion-in-partnership-with-sony-music-beginning-with-ives-north-america-debut/"
+      ]
+    },
+    "YG Plus": {
+      "credits": [
+        "YG PLUS"
+      ],
+      "sources": [
+        "https://www.ygplus.com/en/business/music"
+      ]
+    },
+    "DREAMUS": {
+      "credits": [
+        "Dreamus"
+      ],
+      "sources": [
+        "https://www.dreamuscompany.com/company/aboutus"
+      ]
+    },
+    "CJ ENM Alliance": {
+      "credits": [
+        "지니뮤직",
+        "지니뮤직, Stone Music Entertainment",
+        "Stone Music Entertainment",
+        "Genie Music",
+        "KT Genie Music"
+      ],
+      "sources": [
+        "https://gemstone.geniemusic.co.kr/signIn/popupLayerContactUs",
+        "https://cjenm.com/en/music/artist-and-label/"
+      ]
+    }
+  },
+  "agreement_review": [
+    {
+      "topic": "Sony Music / Columbia",
+      "decision": "Do not assign all Sony credits to Kakao. The announcement concerns IVE and North American activities; none of the Sony-credited artist/title pairs in this CSV are IVE.",
+      "url": "https://newsroom.kakaoent.com/news/kakao-entertainment-accelerates-global-expansion-in-partnership-with-sony-music-beginning-with-ives-north-america-debut/"
+    },
+    {
+      "topic": "YG Plus partner labels",
+      "decision": "YG PLUS explicitly lists HYBE, YG, THEBLACKLABEL and VLAST partnerships. Their rows already credited YG PLUS are included. Do not overwrite historical Dreamus or other distributor credits merely from artist affiliation.",
+      "url": "https://www.ygplus.com/en/business/music"
+    },
+    {
+      "topic": "Beyond Music",
+      "decision": "Excluded: the Dreamus distribution agreement ended in 2025. The old 2022 partnership is insufficient for a current blanket mapping.",
+      "url": "https://en.topdaily.kr/articles/8609"
+    },
+    {
+      "topic": "Genie and Stone Music",
+      "decision": "Combined per the requested CJ ENM alliance definition. Genie's own distribution portal lists separate Genie Music and CJ ENM (STONE MUSIC) contract contacts.",
+      "url": "https://gemstone.geniemusic.co.kr/signIn/popupLayerContactUs"
+    },
+    {
+      "topic": "Other international / independent credits",
+      "decision": "Warner, Universal, Interpark, NHN Bugs, Chemical Records, Danal, Blending and Music Brothers remain unassigned: no reviewed evidence establishes that the particular credited recordings belong to one of the four distribution groups. Missing evidence is not a claim that no agreement exists.",
+      "url": "https://kind.krx.co.kr/external/dst/irReference/17269/2Q25_KT%20GENIE%20MUSIC_IR%20Book%28KOR%29.pdf"
+    }
+  ]
+}

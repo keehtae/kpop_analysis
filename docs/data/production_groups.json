@@ -1,0 +1,64 @@
+{
+  "reviewed_on": "2026-09-14",
+  "policy": "Current parent/subsidiary classification applied to all chart years, not ownership at release time. Use production_agency only. Count distinct artist + song_title within each parent; co-credits within one parent count once. Minority investments and distribution relationships are excluded.",
+  "groups": {
+    "HYBE": {
+      "labels": [
+        "BIGHIT MUSIC",
+        "플레디스",
+        "쏘스뮤직",
+        "빌리프랩",
+        "KOZ 엔터테인먼트",
+        "ADOR"
+      ],
+      "sources": [
+        "https://hybecorp.com/eng/company/business"
+      ]
+    },
+    "SM": {
+      "labels": [
+        "SM Entertainment",
+        "Label SJ"
+      ],
+      "sources": [
+        "https://www.smentertainment.com/en/company/",
+        "https://en.wikipedia.org/wiki/Label_SJ"
+      ],
+      "note": "Label SJ is a historical SM imprint; SM co-credits such as PUBG are included through the SM production credit."
+    },
+    "JYP": {
+      "labels": [
+        "JYP Entertainment"
+      ],
+      "sources": [
+        "https://www.jype.com/JYP"
+      ],
+      "note": "No separately credited JYP subsidiary labels appear in the current CSV."
+    },
+    "YG": {
+      "labels": [
+        "YG Entertainment"
+      ],
+      "sources": [
+        "https://ygfamily.com/en/artists/list"
+      ],
+      "note": "No additional current YG subsidiary production labels appear in the CSV."
+    }
+  },
+  "exclusions": [
+    {
+      "label": "The Black Label",
+      "reason": "Minority investment, not a current YG subsidiary. Excluded from this subsidiary-only grouping.",
+      "source": "https://www.medcom.id/hiburan/musik/nbw5lLDK-tak-ada-lagi-perwakilan-yg-di-theblacklabel-kini-resmi-jadi-agensi-mandiri"
+    },
+    {
+      "label": "울림 엔터테인먼트",
+      "reason": "Former SM affiliation; current controlling-subsidiary status was not established by the reviewed sources. Excluded rather than assuming current ownership.",
+      "source": "https://en.wikipedia.org/wiki/Woollim_Entertainment"
+    },
+    {
+      "label": "YG PLUS / Dreamus / Kakao Entertainment",
+      "reason": "Distribution credits do not determine production-label ownership. Other Kakao labels are not automatically SM subsidiaries."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Models | K-pop Data Atlas</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+  </head>
+  <body data-page="models">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="nav-wrap">
+          <a class="brand-lockup" href="index.html">
+            <span class="brand-kicker">K-pop chart analysis site</span>
+            <span class="brand-title">K-pop Data Atlas</span>
+          </a>
+          <nav class="nav-links">
+            <a class="nav-link" data-page="home" href="index.html">Home</a>
+            <a class="nav-link" data-page="exploratory" href="exploratory.html">Exploratory</a>
+            <a class="nav-link" data-page="models" href="models.html">Models</a>
+            <a class="nav-link" data-page="music" href="music.html">Music</a>
+            <a class="nav-link" data-page="methodology" href="methodology.html">Methodology</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="page-wrap">
+        <section class="hero">
+          <article class="hero-copy">
+            <div class="eyebrow">Modeling workspace</div>
+            <h1 class="page-title">Models</h1>
+            <p class="lede">
+              This page is set up as the modeling layer for the project. It follows the same gallery-like rhythm as the label reference sites,
+              but the content blocks are organized around forecasting, ranking, and survival-style questions you may want to test next.
+            </p>
+          </article>
+          <aside class="hero-panel">
+            <div class="metric-label">Suggested Scope</div>
+            <div class="metric-value">Forecast / Classify / Explain</div>
+          </aside>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Candidate Tracks</div>
+              <h2 class="section-title">Three model directions</h2>
+            </div>
+          </div>
+          <div class="detail-grid">
+            <article class="detail-card">
+              <div class="metric-label">Longevity Model</div>
+              <p class="card-copy">
+                Predict total weeks on chart from early-week rank behavior, agency, release timing, and score momentum.
+              </p>
+            </article>
+            <article class="detail-card">
+              <div class="metric-label">Peak Rank Model</div>
+              <p class="card-copy">
+                Estimate whether a track will enter the top 10, top 3, or #1 using first-entry conditions and artist history.
+              </p>
+            </article>
+            <article class="detail-card">
+              <div class="metric-label">Volatility Model</div>
+              <p class="card-copy">
+                Model week-to-week movement magnitude to learn which songs are stable climbers versus event-driven spikes.
+              </p>
+            </article>
+            <article class="detail-card">
+              <div class="metric-label">Commentary Space</div>
+              <p class="card-copy">
+                Use this panel to describe features, train-test design, evaluation metrics, or why certain artists should be grouped together.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-panel">
+          This page is intentionally structured for future model outputs and explanatory writeups.
+        </div>
+      </footer>
+    </div>
+
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

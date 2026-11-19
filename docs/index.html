@@ -1,44 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore K-pop chart rankings and Essentia audio features.">
-  <title>K-pop Chart & Audio Explorer</title>
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <main>
-    <header class="intro">
-      <p class="eyebrow">Circle Chart × Essentia</p>
-      <h1>The sound behind the charts.</h1>
-      <p class="subtitle">Explore weekly K-pop rankings and the audio features behind the songs.</p>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-pop Data Atlas</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="nav-wrap">
+          <a class="brand-lockup" href="index.html">
+            <span class="brand-kicker">Inspired by Entertainment Label Editorial Design</span>
+            <span class="brand-title">K-pop Data Atlas</span>
+          </a>
+          <nav class="nav-links">
+            <a class="nav-link" data-page="home" href="index.html">Home</a>
+            <a class="nav-link" data-page="exploratory" href="exploratory.html">Exploratory</a>
+            <a class="nav-link" data-page="models" href="models.html">Models</a>
+            <a class="nav-link" data-page="music" href="music.html">Music</a>
+            <a class="nav-link" data-page="methodology" href="methodology.html">Methodology</a>
+          </nav>
+        </div>
+      </header>
 
-    <section class="metrics" aria-label="Dataset overview">
-      <div><span id="ranking-count">—</span><p>Chart appearances</p></div>
-      <div><span id="song-count">—</span><p>Songs with audio features</p></div>
-      <div><span id="week-count">—</span><p>Chart weeks</p></div>
-    </section>
+      <main class="page-wrap">
+        <section class="hero">
+          <article class="hero-copy">
+            <div class="eyebrow">SM / JYP / YG shared cues</div>
+            <h1 class="page-title">Editorial Scale. Minimal Color. Artist-First Storytelling.</h1>
+            <p class="lede">
+              This local site translates the visual language common to SM, JYP, and YG into a K-pop chart-analysis hub:
+              restrained black-and-ivory color, large uppercase headlines, spacious grids, and a clean showcase layout
+              where the content carries the page.
+            </p>
+            <p class="lede">
+              Chart analysis and music highlights use <code>Artists/20w1_26w35_artists_cleaned.csv</code>.
+              Unique songs are counted by artist and title; song–artist–album combinations count album releases separately.
+            </p>
+            <p class="section-copy" data-dataset-summary></p>
+          </article>
+          <aside class="hero-panel">
+            <div>
+              <div class="metric-label">Dataset Window</div>
+              <div class="metric-value" data-dataset-window></div>
+            </div>
+            <div class="hero-stat-list" data-home-stats></div>
+          </aside>
+        </section>
 
-    <section class="explorer" aria-labelledby="explorer-title">
-      <div class="section-heading">
-        <div><p class="eyebrow">Explore the data</p><h2 id="explorer-title">Find an artist. Discover a song.</h2></div>
-        <a id="download" href="./data/rankings.json" download>Download dataset</a>
-      </div>
-      <div class="controls">
-        <label>Dataset<select id="dataset"><option value="rankings">Weekly rankings</option><option value="essentia_and_rankings">Audio features</option></select></label>
-        <label class="search">Search artist, song or album<input id="search" type="search" placeholder="Search the collection…" autocomplete="off"></label>
-        <label id="measure-control" hidden>Audio feature or chart week<select id="measure"></select></label>
-      </div>
-      <p id="status" role="status">Loading datasets…</p>
-      <div class="table-scroll" tabindex="0" role="region" aria-label="Search results">
-        <table id="results"><caption class="sr-only">K-pop dataset search results</caption><thead></thead><tbody></tbody></table>
-      </div>
-      <div class="pagination"><button id="previous" disabled>Previous</button><span id="page">—</span><button id="next" disabled>Next</button></div>
-    </section>
-    <footer><p>Weekly rankings from Circle Chart. Audio features calculated with Essentia.</p><p>Missing weekly scores are shown as blank values.</p></footer>
-  </main>
-</body>
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Project Frame</div>
+              <h2 class="section-title">What the reference sites had in common</h2>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="metric-label">Typography</div>
+              <p class="card-copy">Large uppercase headings, strong contrast, and a premium editorial feel over playful UI styling.</p>
+            </article>
+            <article class="feature-card">
+              <div class="metric-label">Palette</div>
+              <p class="card-copy">Monochrome foundations dominate. Accent color is sparse, with image or content doing most of the visual work.</p>
+            </article>
+            <article class="feature-card">
+              <div class="metric-label">Layout</div>
+              <p class="card-copy">Artist grids, generous whitespace, and modular showcase panels create a gallery-like presentation rhythm.</p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Lead Signals</div>
+              <h2 class="section-title">Longest-running songs on the chart</h2>
+            </div>
+          </div>
+          <div class="chart-grid">
+            <article class="content-panel chart-card">
+              <div class="metric-label">Top Songs by Longevity</div>
+              <div class="mini-list" data-home-songs></div>
+            </article>
+            <article class="note-card">
+              <div class="metric-label">Commentary Space</div>
+              <p class="note-text">
+                Use this area for a short thesis on what chart longevity means in your dataset. The layout is set up for an editorial
+                paragraph, a short header, or a multi-sentence interpretation beside the visual sections.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Artist Presence</div>
+              <h2 class="section-title">High-frequency chart names</h2>
+            </div>
+          </div>
+          <div class="artist-grid" data-home-artists></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-panel">
+          Built for local hosting from the notebook and CSV files in this workspace.
+        </div>
+      </footer>
+    </div>
+
+    <script src="static/js/main.js"></script>
+  </body>
 </html>

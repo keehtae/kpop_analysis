@@ -1,0 +1,88 @@
+/* Page-specific styles reuse the atlas palette and typography. */
+[hidden] { display: none !important; }
+.methodology-page .methodology-hero { grid-template-columns: minmax(0, 1.5fr) minmax(310px, 1fr); gap: 22px; }
+.methodology-hero .hero-copy { min-height: 340px; }
+.methodology-hero .page-title { font-size: clamp(2.3rem, 5vw, 4.1rem); overflow-wrap: anywhere; }
+.methodology-hero .hero-copy::after { pointer-events: none; }
+.method-button { display: inline-flex; border: 1px solid var(--line); padding: 12px 18px; border-radius: 999px; font-size: .85rem; margin-top: 12px; position: relative; z-index: 1; }
+.method-button:hover { background: var(--panel-strong); }
+.source-panel h2 { font-family: var(--display); font-size: 2rem; margin: 14px 0 8px; font-weight: 400; }
+.source-filename { font-size: .84rem; padding-bottom: 14px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.source-panel .card-copy { font-size: .88rem; }
+.source-sheet { color: var(--muted); font-size: .8rem; }
+.source-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: .8rem; align-items: center; border-top: 1px solid var(--line); padding-top: 16px; }
+.source-meta strong { font-family: var(--display); font-size: 1.5rem; font-weight: 400; margin-right: 4px; }
+.source-meta a { margin-left: auto; }
+.methodology-page a:not(.method-button):not(.permalink), [data-page="methodology"] .footer-panel a { text-decoration: underline; text-decoration-color: var(--accent-soft); text-underline-offset: 4px; }
+.dictionary-heading { margin-top: 0; }
+.dictionary-intro { max-width: 92ch; font-size: .94rem; }
+.dictionary-outline { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 24px 0; padding: 16px 0; }
+.dictionary-outline summary { cursor: pointer; font-size: .88rem; }
+.dictionary-outline nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 28px; margin-top: 22px; padding-bottom: 6px; }
+.dictionary-outline nav a { display: flex; justify-content: space-between; gap: 10px; font-size: .83rem; }
+.dictionary-outline nav span { color: var(--muted); }
+.dictionary-search { padding: 22px 24px 16px; background: var(--panel-strong); border: 1px solid var(--line); margin-bottom: 32px; }
+.dictionary-search label { display: block; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-size: .75rem; margin-bottom: 12px; }
+.search-input-row { display: flex; gap: 12px; }
+.search-input-row input { min-width: 0; flex: 1; padding: 14px 16px; font: inherit; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; background: var(--panel); }
+.search-input-row button { font: inherit; font-size: .84rem; padding: 10px 18px; border: 1px solid var(--line); border-radius: 999px; background: transparent; cursor: pointer; }
+.search-input-row button:disabled { opacity: .5; cursor: default; }
+.search-meta { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+#search-count { white-space: nowrap; }
+.dictionary-group { margin-bottom: 36px; border: 1px solid var(--line); background: rgba(255,255,255,.52); }
+.group-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 20px 22px; gap: 12px; background: rgba(215,192,161,.14); }
+.group-heading h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 1.6rem; overflow-wrap: anywhere; }
+.group-heading h3 span { font-family: var(--body); color: var(--accent); font-size: .73rem; letter-spacing: .1em; vertical-align: middle; margin-right: 12px; }
+.algorithm-reference { color: var(--muted); font-size: .75rem; }
+.group-description { padding: 0 22px; color: var(--muted); font-size: .9rem; line-height: 1.75; }
+.dictionary-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .86rem; }
+.col-name { width: 28%; } .col-type { width: 11%; } .col-values { width: 20%; } .col-description { width: 41%; }
+.dictionary-table td, .dictionary-table th { padding: 20px 16px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); line-height: 1.75; overflow-wrap: anywhere; }
+.dictionary-table thead th { font-size: .69rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 500; color: var(--muted); padding-top: 12px; padding-bottom: 12px; }
+.dictionary-table th[scope="row"] { font-weight: 500; }
+.dictionary-table code { font-family: "SFMono-Regular", Consolas, monospace; font-size: .8rem; }
+.dictionary-table tbody tr:hover { background: rgba(255,253,249,.85); }
+.dictionary-table tbody tr:target { background: #efe1cf; }
+.type-tag { font-family: monospace; font-size: .76rem; color: var(--muted); }
+.variable-note { display: block; color: var(--muted); margin-top: 10px; font-size: .78rem; }
+.permalink { display: inline-block; color: var(--muted); padding: 0 7px; font-weight: 400; }
+.chart-reference { display: block; margin-top: 8px; }
+.frame-note { border-left: 3px solid var(--accent); background: #eee4d6; padding: 26px 30px; margin: 4px 0 30px; }
+.frame-note h3 { font-family: var(--display); font-size: 1.7rem; font-weight: 400; margin: 10px 0; }
+.frame-note p { color: #514a41; line-height: 1.8; font-size: .92rem; margin-bottom: 0; max-width: 110ch; }
+.empty-state { padding: 40px 24px; border: 1px solid var(--line); text-align: center; color: var(--muted); }
+.empty-state h3 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; color: var(--ink); }
+.methodology-status { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 36px; max-width: 90ch; color: var(--muted); line-height: 1.8; font-size: .85rem; }
+.methodology-status h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 400; color: var(--ink); margin: 0; }
+#dictionary, .dictionary-group, [data-variable] { scroll-margin-top: 130px; }
+.sr-only, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-link:focus { position: fixed; z-index: 50; top: 10px; left: 10px; background: var(--panel-strong); padding: 14px; }
+[data-page="methodology"] :focus-visible { outline: 2px solid #805b38; outline-offset: 4px; }
+@media (max-width: 1080px) {
+ .methodology-page .methodology-hero { grid-template-columns: 1fr; }
+ .methodology-hero .hero-copy { min-height: 280px; }
+ .source-panel { gap: 12px; }
+}
+@media (max-width: 760px) {
+ .methodology-hero .page-title { font-size: clamp(1.4rem, 7.6vw, 2.7rem); }
+ .dictionary-heading, .search-meta { flex-direction: column; align-items: flex-start; gap: 0; }
+ .dictionary-heading .pill { margin-top: 14px; }
+ .dictionary-outline nav { grid-template-columns: 1fr; }
+ .dictionary-search { padding: 18px 16px; }
+ .search-input-row { flex-wrap: wrap; }
+ .search-input-row input { flex-basis: 100%; }
+ .dictionary-table, .dictionary-table tbody, .dictionary-table tr, .dictionary-table td, .dictionary-table th[scope="row"] { display: block; width: 100%; }
+ .dictionary-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+ .dictionary-table colgroup { display: none; }
+ .dictionary-table tr { padding: 18px; border-top: 1px solid var(--line); }
+ .dictionary-table td, .dictionary-table th[scope="row"] { border: 0; padding: 6px 0; }
+ .dictionary-table td::before { content: attr(data-label); display: block; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-size: .64rem; }
+ .dictionary-table th[scope="row"] { padding-bottom: 12px; }
+ .frame-note { padding: 24px 20px; }
+ #dictionary, .dictionary-group, [data-variable] { scroll-margin-top: 220px; }
+ .group-heading { padding: 18px; }
+ .group-heading h3 { font-size: 1.35rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.group-description, .frame-note p { white-space: pre-line; }

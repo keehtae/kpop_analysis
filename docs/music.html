@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music | K-pop Data Atlas</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+  </head>
+  <body data-page="music">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="nav-wrap">
+          <a class="brand-lockup" href="index.html">
+            <span class="brand-kicker">K-pop chart analysis site</span>
+            <span class="brand-title">K-pop Data Atlas</span>
+          </a>
+          <nav class="nav-links">
+            <a class="nav-link" data-page="home" href="index.html">Home</a>
+            <a class="nav-link" data-page="exploratory" href="exploratory.html">Exploratory</a>
+            <a class="nav-link" data-page="models" href="models.html">Models</a>
+            <a class="nav-link" data-page="music" href="music.html">Music</a>
+            <a class="nav-link" data-page="methodology" href="methodology.html">Methodology</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="page-wrap">
+        <section class="hero">
+          <article class="hero-copy">
+            <div class="eyebrow">Artist-facing readout</div>
+            <h1 class="page-title">Music</h1>
+            <p class="section-copy" data-dataset-summary></p>
+            <p class="lede">
+              This page reframes the dataset for a music and roster audience. It keeps the same minimal, premium presentation as the home page,
+              but shifts the emphasis toward standout songs, repeat chart presence, and the agency infrastructure behind the results.
+            </p>
+          </article>
+          <aside class="hero-panel">
+            <div class="metric-label">Editorial Angle</div>
+            <div class="metric-value">Songs / Artists / Agencies</div>
+          </aside>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Standouts</div>
+              <h2 class="section-title">Songs with the longest chart life</h2>
+            </div>
+          </div>
+          <div class="chart-grid">
+            <article class="table-panel">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Weeks</th>
+                  </tr>
+                </thead>
+                <tbody data-music-songs></tbody>
+              </table>
+            </article>
+            <aside class="note-card">
+              <div class="metric-label">Commentary Space</div>
+              <p class="note-text">
+                Write a music-facing interpretation here: which songs behaved like catalog staples, which ones had explosive launch windows,
+                and which artists seem to sustain attention across multiple release cycles.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Peak Control</div>
+              <h2 class="section-title">Songs that held rank #1</h2>
+            </div>
+          </div>
+          <article class="content-panel chart-card">
+            <div class="mini-list" data-music-number-ones></div>
+          </article>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Infrastructure</div>
+              <h2 class="section-title">Agency footprint</h2>
+            </div>
+          </div>
+          <div class="detail-grid" data-music-agencies></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Full Dataset</div>
+              <h2 class="section-title">Scrollable CSV browser</h2>
+            </div>
+          </div>
+          <article class="table-panel">
+            <p class="section-copy">
+              This section surfaces the full CSV-derived dataset in a fixed-height viewport so roughly 30 rows are visible at once.
+              Scroll vertically for more records and horizontally for the wider column set.
+            </p>
+            <div class="table-scroll table-scroll-tall" data-music-dataset-scroll>
+              <table class="data-table data-table-wide" data-music-dataset-table>
+                <thead data-music-dataset-head></thead>
+                <tbody data-music-dataset-body></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-panel">
+          Music page highlights are also generated from the same exploratory dataset.
+        </div>
+      </footer>
+    </div>
+
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

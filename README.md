@@ -9,7 +9,8 @@ python3 gold.py
 ```
 
 The database is `data/Final_Project.duckdb`. Dependencies are `duckdb`,
-`playwright` (Bronze), `PyYAML` and `openpyxl` (Silver).
+`playwright` (Bronze), `PyYAML` and `openpyxl` (Silver), and `numpy` and `polars`
+for the public website's chart-data build.
 
 `silver.py` rebuilds the artist-filtered chart tables, then calls
 `joined.run_joined()` using `silver.rankings`. The join preserves the supplied
@@ -62,8 +63,17 @@ The website lives in `docs/`. Its data comes only from `gold.rankings` and
 `gold.essentia_and_rankings`. The DuckDB file, Bronze, Silver, quarantine and
 input workbooks are not copied into that folder or uploaded by the Pages workflow.
 Every file in the deployed website, including its JSON datasets, is public.
-The website currently provides dataset downloads, search and paginated browsing;
-its layout can be updated when design references are supplied.
+The website is a copy of the original K-pop Data Atlas: Home, Exploratory,
+Models, Music and Methodology. The HTML pages, CSS, JavaScript, audio-feature
+dictionary and agency mapping files were copied without content or styling
+changes. The original local website folder is unchanged and is not required
+to run or update this copy.
+
+`build_site_data.py` retains the original chart calculations and builds their
+expected `site_data.json` structure from the public `gold.rankings` export.
+It maps `time` to `week`, `production` to `production_agency`, and `distribution`
+to `distribution_agency`. The copied pages retain their original written content,
+including references to the original CSV; displayed chart results use Gold data.
 
 ### Refresh the public data
 
@@ -80,11 +90,12 @@ To export already-built Gold tables without rebuilding them:
 python3 export_public_data.py
 ```
 
-These commands produce three files to commit:
+These commands produce four files to commit:
 
 - `docs/data/rankings.json`
 - `docs/data/essentia_and_rankings.json`
 - `docs/data/manifest.json`
+- `docs/data/site_data.json` (the copied Atlas charts, derived from public rankings)
 
 The two dataset files contain `columns` and `rows`; each row is an array in
 column order. All Gold columns are included except local filesystem path
@@ -97,6 +108,11 @@ list in `public_export.json`, rerun the exporter, and commit the refreshed files
 Removing a column in a later release does not erase earlier Git history or
 copies that visitors already downloaded. Local path columns are always omitted,
 even if removed from the configuration's exclusion list.
+
+The Atlas charts require all nine original ranking columns. If you exclude one
+of those columns, the public export stops with an error rather than publishing
+an incomplete chart dataset. To rebuild only the Atlas chart data from already
+exported rankings, run `python3 build_site_data.py`.
 
 ### Enable GitHub Pages
 

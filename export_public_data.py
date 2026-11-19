@@ -19,7 +19,7 @@ import duckdb
 ROOT = Path(__file__).resolve().parent
 PUBLIC_TABLES = ("gold.rankings", "gold.essentia_and_rankings")
 LOCAL_PATH = re.compile(
-    r"(?:file://)?(?:/(?:Users|home|private|tmp|var|Volumes|mnt)/|[A-Za-z]:[\\/]|\\\\)"
+    r"(?:file://)?(?:/(?:Users|home|private|tmp|var|Volumes|mnt)/|(?<![A-Za-z0-9])[A-Za-z]:[\\/]|\\\\)"
     r"[^\r\n\"'<>]*"
 )
 
@@ -89,12 +89,15 @@ def export_public_data(connection, output_dir=None, config_path=None):
             )
             manifest["tables"].append({"table": table, "file": filename, "row_count": len(records),
                                        "column_count": len(included), "excluded_columns": omitted})
+        from build_site_data import build_site_data
+        build_site_data(staging / "rankings.json", staging / "site_data.json", output_dir)
         (staging / "manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
         )
         output_dir.mkdir(parents=True, exist_ok=True)
         for item in manifest["tables"]:
             (staging / item["file"]).replace(output_dir / item["file"])
+        (staging / "site_data.json").replace(output_dir / "site_data.json")
         (staging / "manifest.json").replace(output_dir / "manifest.json")
     for item in manifest["tables"]:
         print(f"Public {item['table']}: {item['row_count']:,} rows, {item['column_count']} columns")
