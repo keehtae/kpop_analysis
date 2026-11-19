@@ -30,7 +30,7 @@ function populateHome(data) {
       <article class="stat-card"><div class="metric-label">Chart Rows</div><div class="metric-value">${formatNumber(overview.rows)}</div></article>
       <article class="stat-card"><div class="metric-label">Unique Artists</div><div class="metric-value">${formatNumber(overview.unique_artists)}</div></article>
       <article class="stat-card"><div class="metric-label">Unique Songs</div><div class="metric-value">${formatNumber(overview.unique_songs)}</div></article>
-      <article class="stat-card"><div class="metric-label">Weeks</div><div class="metric-value metric-value-weeks">${formatWeek(overview.week_start)} – ${formatWeek(overview.week_end)}</div></article>
+      <article class="stat-card"><div class="metric-label">Date Range</div><div class="metric-value metric-value-weeks">${formatWeek(overview.week_start)} – ${formatWeek(overview.week_end)}</div></article>
     `;
   }
 
