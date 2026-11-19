@@ -5,6 +5,8 @@ rules:
     condition: >-
       regexp_matches(coalesce(artist, '') || ' ' || _title,
       '(?i)(\bfeat(?:uring)?\b|\bft\b|피처링|피쳐링)')
+  - label: production_credit
+    condition: regexp_matches(_title, '(?i)\bprod(?:uced)?\b')
   - label: multiple_artists
     condition: >-
       artist NOT IN (SELECT artist FROM artist_list)

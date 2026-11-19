@@ -1,4 +1,4 @@
-"""Check bronze artist data and rebuild silver and quarantine tables.
+"""Check bronze artist data, join Essentia features and rebuild Silver/quarantine.
 Keep reviewed artist corrections in the database for later runs.
 """
 
@@ -7,6 +7,7 @@ from pathlib import Path
 
 import duckdb
 
+from joined import add_join_arguments, join_options, run_joined
 from quality import apply_quality_rules, load_rules
 
 
@@ -90,7 +91,8 @@ def build_table(connection, table, rules):
     )
 
 
-def run_silver(connection, artists_path, rules_path, approve=None, artist=None, revoke=None):
+def run_silver(connection, artists_path, rules_path, approve=None, artist=None, revoke=None,
+               **joined_options):
     rules = load_rules(rules_path)
     connection.execute("BEGIN TRANSACTION")
     try:
@@ -120,12 +122,15 @@ def run_silver(connection, artists_path, rules_path, approve=None, artist=None, 
         if revoke:
             review_row(connection, "revoke", revoke)
         counts = {table: build_table(connection, table, rules) for table in TABLES}
+        joined_counts = run_joined(connection, **joined_options)
         connection.execute("COMMIT")
     except Exception:
         connection.execute("ROLLBACK")
         raise
     for table, (valid, quarantined) in counts.items():
         print(f"{table}: {valid} silver, {quarantined} quarantine")
+    for table, count in joined_counts.items():
+        print(f"{table}: {count:,} rows")
 
 
 def main(argv=None):
@@ -134,6 +139,7 @@ def main(argv=None):
     reviews.add_argument("--approve", nargs=2, metavar=("TABLE", "ID"), help="Approve one quarantined row.")
     reviews.add_argument("--revoke", nargs=2, metavar=("TABLE", "ID"), help="Revoke one saved approval.")
     parser.add_argument("--artist", help="Exact artist from artists.csv for the approved row.")
+    add_join_arguments(parser)
     args = parser.parse_args(argv)
     if bool(args.approve) != (args.artist is not None):
         parser.error("Use --approve TABLE ID together with --artist NAME.")
@@ -146,6 +152,7 @@ def main(argv=None):
             run_silver(
                 connection, base_dir / "artists.csv", base_dir / "quality_rules.yml",
                 args.approve, args.artist, args.revoke,
+                **join_options(args),
             )
         except ValueError as exc:
             parser.error(str(exc))
