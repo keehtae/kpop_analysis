@@ -31,6 +31,7 @@ The join writes these tables:
 | `quarantine.joined_unavailable` | Unavailable song, artist and album |
 | `quarantine.joined_removed` | All four removed-tab sections, identified by `category`; preserves duplicate `action`, row numbers, score notes and section notes |
 | `gold.essentia_and_rankings` | Silver joined rows with `chart_song` through `filename` removed, inclusively |
+| `gold.rankings` | Unchanged copy of `silver.rankings` |
 
 There is no shared `quarantine.joined` table or extra status column: each
 quarantine table identifies its own review state. The removed audit includes
@@ -54,3 +55,91 @@ To rebuild only the join tables after Silver rankings already exist, run
 `python3 joined.py` with the same source options. Rerun `python3 gold.py` after
 each Silver refresh to update Gold. Table replacements within each layer are
 transactional, so a failed build keeps the previous tables.
+
+## GitHub Pages
+
+The website lives in `docs/`. Its data comes only from `gold.rankings` and
+`gold.essentia_and_rankings`. The DuckDB file, Bronze, Silver, quarantine and
+input workbooks are not copied into that folder or uploaded by the Pages workflow.
+Every file in the deployed website, including its JSON datasets, is public.
+The website currently provides dataset downloads, search and paginated browsing;
+its layout can be updated when design references are supplied.
+
+### Refresh the public data
+
+Close any open DuckDB connection, then run:
+
+```sh
+python3 silver.py
+python3 gold.py --export-public
+```
+
+To export already-built Gold tables without rebuilding them:
+
+```sh
+python3 export_public_data.py
+```
+
+These commands produce three files to commit:
+
+- `docs/data/rankings.json`
+- `docs/data/essentia_and_rankings.json`
+- `docs/data/manifest.json`
+
+The two dataset files contain `columns` and `rows`; each row is an array in
+column order. All Gold columns are included except local filesystem path
+columns. NULL and numeric zero are preserved. Local paths embedded in text,
+such as an error message, are redacted. The manifest gives each dataset's
+row/column counts and omitted columns, without including the database location.
+
+To hide additional columns later, add their exact names to the corresponding
+list in `public_export.json`, rerun the exporter, and commit the refreshed files.
+Removing a column in a later release does not erase earlier Git history or
+copies that visitors already downloaded. Local path columns are always omitted,
+even if removed from the configuration's exclusion list.
+
+### Enable GitHub Pages
+
+1. Review the contents of `docs/data/`. Only commit data you intend to make public.
+2. Commit and push the new website, public export settings and code to `main`.
+3. In the GitHub repository, open **Settings → Pages** and set **Build and
+   deployment → Source → GitHub Actions**.
+4. Open **Actions → Publish GitHub Pages → Run workflow**, select `main`, and
+   run it. Later pushes changing `docs/` deploy automatically.
+5. Open the deployment URL from the workflow. For this repository, the expected
+   default URL is `https://keehtae.github.io/kpop_analysis/`.
+
+The workflow uploads **only `docs/`**, using `actions/upload-pages-artifact`.
+It uses the normal GitHub Actions token and does not need a personal access token.
+Gold exports are generated locally and committed; Actions does not need access
+to your database or Essentia files.
+
+GitHub Pages works with public repositories on GitHub Free. Publishing from a
+private repository requires a supported paid plan; the published site is normally
+public even when its source repository is private. Keeping the repository private
+does not require publishing its database or internal tables.
+
+The old root-level `Final_Project.duckdb` file is already tracked in Git (it is
+currently empty). The expanded `.gitignore` prevents new database files from being
+added but does not untrack files already committed. To stop tracking the old file
+while keeping the local copy, run:
+
+```sh
+git rm --cached Final_Project.duckdb
+```
+
+Do not add the repository root as the Pages artifact. Files already committed to
+a public repository remain accessible from Git history even if not deployed.
+
+### Preview locally
+
+```sh
+python3 -m http.server 8000 --directory docs
+```
+
+Open `http://localhost:8000`. Use the HTTP server instead of opening `index.html`
+directly, so the browser can fetch the JSON datasets.
+
+GitHub references: [About Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages),
+[publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site),
+and [custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

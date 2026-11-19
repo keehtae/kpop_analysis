@@ -2,6 +2,10 @@
 Keep reviewed artist corrections in the database for later runs.
 """
 
+# Purchase exclusions: tripleS, WINNER, THE BOYZ, WJSN (우주소녀), Brave Girls
+# and KiiiKiii were removed from artists.csv because of iTunes purchasing issues.
+# Their songs will not be purchased. The user will provide a detailed reason later.
+
 import argparse
 from pathlib import Path
 

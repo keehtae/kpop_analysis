@@ -1,0 +1,47 @@
+name: Publish GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Check that public data was exported
+        run: |
+          test -f docs/index.html
+          test -f docs/data/manifest.json
+          test -f docs/data/rankings.json
+          test -f docs/data/essentia_and_rankings.json
+          if find docs -type f \( -name '*.duckdb*' -o -name '*.xlsx' \) | grep -q .; then
+            echo "Database and workbook files must not be deployed."
+            exit 1
+          fi
+      - name: Upload website folder only
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

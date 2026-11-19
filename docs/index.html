@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore K-pop chart rankings and Essentia audio features.">
+  <title>K-pop Chart & Audio Explorer</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <p class="eyebrow">Circle Chart × Essentia</p>
+      <h1>The sound behind the charts.</h1>
+      <p class="subtitle">Explore weekly K-pop rankings and the audio features behind the songs.</p>
+    </header>
+
+    <section class="metrics" aria-label="Dataset overview">
+      <div><span id="ranking-count">—</span><p>Chart appearances</p></div>
+      <div><span id="song-count">—</span><p>Songs with audio features</p></div>
+      <div><span id="week-count">—</span><p>Chart weeks</p></div>
+    </section>
+
+    <section class="explorer" aria-labelledby="explorer-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Explore the data</p><h2 id="explorer-title">Find an artist. Discover a song.</h2></div>
+        <a id="download" href="./data/rankings.json" download>Download dataset</a>
+      </div>
+      <div class="controls">
+        <label>Dataset<select id="dataset"><option value="rankings">Weekly rankings</option><option value="essentia_and_rankings">Audio features</option></select></label>
+        <label class="search">Search artist, song or album<input id="search" type="search" placeholder="Search the collection…" autocomplete="off"></label>
+        <label id="measure-control" hidden>Audio feature or chart week<select id="measure"></select></label>
+      </div>
+      <p id="status" role="status">Loading datasets…</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Search results">
+        <table id="results"><caption class="sr-only">K-pop dataset search results</caption><thead></thead><tbody></tbody></table>
+      </div>
+      <div class="pagination"><button id="previous" disabled>Previous</button><span id="page">—</span><button id="next" disabled>Next</button></div>
+    </section>
+    <footer><p>Weekly rankings from Circle Chart. Audio features calculated with Essentia.</p><p>Missing weekly scores are shown as blank values.</p></footer>
+  </main>
+</body>
+</html>

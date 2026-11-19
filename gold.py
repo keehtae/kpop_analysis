@@ -31,6 +31,9 @@ def run_gold(connection):
     try:
         connection.execute("CREATE SCHEMA IF NOT EXISTS gold")
         connection.execute(
+            "CREATE OR REPLACE TABLE gold.rankings AS SELECT * FROM silver.rankings"
+        )
+        connection.execute(
             f"CREATE OR REPLACE TABLE gold.essentia_and_rankings AS "
             f"SELECT {projection} FROM silver.essentia_and_rankings"
         )
@@ -47,12 +50,17 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path,
                         default=Path(__file__).resolve().parent / "data/Final_Project.duckdb")
+    parser.add_argument("--export-public", action="store_true",
+                        help="Also export the two Gold tables to docs/data without local paths")
     args = parser.parse_args(argv)
     if not args.database.is_file():
         parser.error(f"Run silver.py first to create {args.database}")
     with duckdb.connect(str(args.database)) as connection:
         try:
             run_gold(connection)
+            if args.export_public:
+                from export_public_data import export_public_data
+                export_public_data(connection)
         except ValueError as exc:
             parser.error(str(exc))
 

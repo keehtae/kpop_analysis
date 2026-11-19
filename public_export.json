@@ -1,0 +1,6 @@
+{
+  "exclude_columns": {
+    "gold.rankings": [],
+    "gold.essentia_and_rankings": ["file_path"]
+  }
+}
