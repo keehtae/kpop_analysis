@@ -646,3 +646,77 @@ img {
 .longevity-commentary:focus-visible { outline: 2px solid #a67c52; outline-offset: 3px; }
 
 .agency-commentary-row + .agency-commentary-row { margin-top: 24px; }
+
+/* The homepage introduction stays compact beside four equal-height stat rows. */
+body[data-page="home"] .hero {
+  margin-bottom: 28px;
+}
+
+body[data-page="home"] .hero-copy {
+  min-height: 0;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body[data-page="home"] .page-title {
+  font-size: clamp(2.1rem, 3.7vw, 3.2rem);
+  line-height: 1.08;
+  text-transform: none;
+  margin: 0 0 18px;
+}
+
+body[data-page="home"] .lede {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+body[data-page="home"] .hero-panel {
+  padding: 16px;
+}
+
+body[data-page="home"] .hero-stat-list {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(4, minmax(60px, 1fr));
+  gap: 10px;
+  height: 100%;
+}
+
+body[data-page="home"] .stat-card {
+  min-width: 0;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: none;
+}
+
+body[data-page="home"] .stat-card .metric-label {
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+body[data-page="home"] .stat-card .metric-value {
+  margin: 0;
+  font-size: 1.9rem;
+  white-space: nowrap;
+}
+
+body[data-page="home"] .stat-card .metric-value-weeks {
+  font-size: clamp(1rem, 1.45vw, 1.15rem);
+}
+
+@media (max-width: 760px) {
+  body[data-page="home"] .hero-copy {
+    padding: 24px;
+  }
+
+  body[data-page="home"] .stat-card {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+}

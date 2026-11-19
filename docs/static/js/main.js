@@ -20,6 +20,7 @@ function buildMiniList(items, renderItem) {
 
 function populateHome(data) {
   const overview = data.overview;
+  const formatWeek = (value) => value.replace(/-W0?(\d+)$/, " W$1");
   const statHost = document.querySelector("[data-home-stats]");
   const songHost = document.querySelector("[data-home-songs]");
   const artistHost = document.querySelector("[data-home-artists]");
@@ -29,7 +30,7 @@ function populateHome(data) {
       <article class="stat-card"><div class="metric-label">Chart Rows</div><div class="metric-value">${formatNumber(overview.rows)}</div></article>
       <article class="stat-card"><div class="metric-label">Unique Artists</div><div class="metric-value">${formatNumber(overview.unique_artists)}</div></article>
       <article class="stat-card"><div class="metric-label">Unique Songs</div><div class="metric-value">${formatNumber(overview.unique_songs)}</div></article>
-      <article class="stat-card"><div class="metric-label">Song / Album Combinations</div><div class="metric-value">${formatNumber(overview.unique_releases)}</div></article>
+      <article class="stat-card"><div class="metric-label">Weeks</div><div class="metric-value metric-value-weeks">${formatWeek(overview.week_start)} – ${formatWeek(overview.week_end)}</div></article>
     `;
   }
 
