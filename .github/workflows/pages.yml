@@ -35,12 +35,14 @@ jobs:
           test -f docs/data/rankings.json
           test -f docs/data/essentia_and_rankings.json
           test -f docs/data/site_data.json
+          test -f docs/data/essentia_exploratory.json
           test -f docs/exploratory.html
           test -f docs/models.html
           test -f docs/music.html
           test -f docs/methodology.html
           test -f docs/static/css/styles.css
           test -f docs/static/js/main.js
+          test -f docs/static/js/essentia_exploratory.js
           if find docs -type f \( -name '*.duckdb*' -o -name '*.xlsx' \) | grep -q .; then
             echo "Database and workbook files must not be deployed."
             exit 1

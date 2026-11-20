@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>K-pop Data Atlas</title>
-    <link rel="stylesheet" href="static/css/styles.css" />
+    <link rel="stylesheet" href="static/css/styles.css?v=essentia-exploratory-1" />
+    <style>
+      aside.longevity-commentary { overflow: hidden; padding: 0; min-height: 0; max-height: none; background: #fcfaf6; }
+      .commentary-scroll { box-sizing: border-box; max-height: min(560px, 65vh); overflow-y: scroll; overflow-x: hidden; padding: 20px; scrollbar-gutter: stable; overscroll-behavior: contain; overflow-wrap: anywhere; }
+      .commentary-scroll::-webkit-scrollbar { width: 12px; }
+      .commentary-scroll::-webkit-scrollbar-track { background: #e9dfd0; }
+      .commentary-scroll::-webkit-scrollbar-thumb { background: #8d8377; border: 2px solid #e9dfd0; border-radius: 6px; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   </head>
   <body data-page="home">
     <div class="site-shell">
@@ -68,10 +76,133 @@
           </div>
           <div class="artist-grid" data-home-artists></div>
         </section>
+        <section class="dataset-intro" aria-labelledby="dataset-exploration-title">
+          <div class="section-head">
+            <h2 class="section-title" id="dataset-exploration-title">Exploring the dataset</h2>
+          </div>
+          <p class="section-copy">The following charts below explores all the songs in the dataset</p>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Longevity</div>
+              <h2 class="section-title">Distribution and longest runs</h2>
+            </div>
+          </div>
+          <div class="chart-grid" data-longevity-section>
+            <article class="chart-card">
+              <div class="chart-column">
+                <div class="chart-frame"><div class="js-chart" data-echart="distribution" aria-label="Distribution of total chart weeks per song"></div><p class="section-copy" data-distribution-stats></p></div>
+                <div class="chart-frame"><div class="js-chart js-chart-bar-tall" data-echart="top-total-weeks" aria-label="Top 10 songs with the most total weeks on the chart"></div></div>
+              </div>
+            </article>
+            <aside class="note-card longevity-commentary" aria-label="Distribution and longest runs commentary" tabindex="0"><div class="commentary-scroll" tabindex="0" role="region" aria-label="Scrollable commentary">
+              <p class="note-text">The distribution of the total number of weeks a song is on Circle Charts is heavily skewed left, with 915 songs being on the charts for less than 25 weeks. The presence of outliers causes the mean to be shifted to the right, coming in at about 15 weeks compared to the median of 3 weeks. Since there are many Kpop groups and each group releases a few songs each year, it makes sense that the majority of these songs would only maintain a chart presence for a couple of weeks. </p>
+              <p class="note-text">The horizontal bar chart highlights the top ten songs with the most number of weeks on the chart. We can see that BTS leads the chart with their two songs 봄날 (bomnal; Spring Day) and Dynamite with 337 and 247 weeks on the chart respectively. Removing these two songs, the remaining songs have a tighter spread with a range of 54 weeks compared to 178 weeks. The great success of BTS likely contributed to their consistent popularity. Interestingly, BTS is the only male group out of the four groups (BTS, NewJeans, IVE, aespa) represented in the top 10, corresponding to a general trend in the Kpop industry where girl groups are targeted towards the general public while male groups are fandom oriented. </p>
+            </div></aside>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Peak Performance</div>
+              <h2 class="section-title">Rank #1 pressure and agency concentration</h2>
+            </div>
+          </div>
+          <div class="chart-grid chart-grid-sticky-notes agency-commentary-row" data-longevity-section>
+            <article class="chart-card chart-card-tall"><div class="chart-column chart-column-spacious">
+                <div class="chart-frame"><div class="js-chart js-chart-bar-tall" data-echart="weeks-at-number-one" aria-label="Top 10 songs with the most weeks at rank 1"></div></div>
+
+            </div></article>
+            <aside class="note-card longevity-commentary" tabindex="0" aria-label="Rank #1 commentary"><div class="commentary-scroll" tabindex="0" role="region" aria-label="Scrollable commentary">
+              <p class="note-text">This chart showcases the songs with the most number of weeks at the #1 rank spot on Circle Charts. Unlike the previous bar chart, there is a greater variety of groups represented: 4 vs 8 groups. Ditto by NewJeans held the number one rank spot for 12 weeks followed closely by Supernova by aespa and Dynamite by BTS. As mentioned previously, the large number of groups alongside the hundreds of songs released each year make it impressive that a single song would stay at the number one rank spot for an extended period of time. While external factors such as group popularity and virality play a component, it is interesting to see if there are any shared audio features within the songs that have held the number one spot for an extended period of time. </p>
+            </div></aside>
+          </div>
+          <div class="chart-grid chart-grid-sticky-notes agency-commentary-row" data-longevity-section>
+            <article class="chart-card chart-card-tall"><div class="chart-column chart-column-spacious">
+                <div class="production-comparison">
+                <div class="chart-frame"><div class="js-chart js-chart-agency-wide" data-echart="agency-production" aria-label="Top production agencies by unique songs"></div></div>
+                  <div class="chart-frame"><div class="js-chart js-chart-agency-wide" data-echart="big-four" aria-label="Big 4 production groups by unique songs"></div></div>
+                </div>
+                <details class="section-copy"><summary>Big 4 label breakdown and counting method</summary>
+                  <p>Current subsidiary groupings, reviewed September 14, 2026, applied across all chart years. Each artist–title pair counts once per group, including songs appearing under multiple labels. Minority investments and distribution deals are excluded.</p>
+                  <div data-big-four-breakdown></div>
+                  <p>THEBLACKLABEL is excluded from YG; Woollim is excluded because current SM control was not established. <a href="data/production_groups.json">View label mappings, exclusions, and sources</a>.</p>
+                </details>
+
+            </div></article>
+            <aside class="note-card longevity-commentary" tabindex="0" aria-label="Production agencies commentary"><div class="commentary-scroll" tabindex="0" role="region" aria-label="Scrollable commentary">
+              <p class="note-text">In terms of production agencies, SM Entertainment leads the charge with 316 songs that have been placed on Circle Charts. Founded in 1995, SM dominated the Kpop scene in the late 90s and early 2000s and have been able to maintain a strong presence through groups such as aespa, RIIZE, and NCT. After SM, there is a sharp drop to 플레디스 (Pledis) and various other labels. </p>
+              <p class="note-text">The chart titled “Big 4” highlights the breakdown of songs for the Big 4 production agencies in Korea: SM, JYP, YG, and HYBE. HYBE is composed of many sublabels such as 플레디스 (Pledis), BIGHIT MUSIC, and 쏘스뮤직 (Source Music). This chart provides a much more accurate breakdown of the Kpop industry. While SM still maintains the lead, HYBE is a close second, with a difference of only 28 songs, housing many popular groups such as LE SSERAFIM, NewJeans, TXT, and many more. JYP and YG lag far behind the others. Formed in 1996 and 1997 respectively, JYP and YG have a long history within the industry; however, they maintain stronger international presences rather than in Korea. Since the Circle Charts Digital chart focuses on Korean streaming, it makes sense YG and JYP are underrepresented.  </p>
+            </div></aside>
+          </div>
+          <div class="chart-grid chart-grid-sticky-notes agency-commentary-row" data-longevity-section>
+            <article class="chart-card chart-card-tall"><div class="chart-column chart-column-spacious">
+                <div class="chart-frame"><div class="js-chart js-chart-agency-wide" data-echart="agency-distribution" aria-label="Top distribution agencies by unique songs"></div></div>
+                <div class="chart-frame"><div class="js-chart js-chart-agency-wide" data-echart="distribution-big-four" aria-label="Big 4 distribution groups by unique songs"></div></div>
+                <details class="section-copy"><summary>Distribution groupings, agreements, and exclusions</summary>
+                  <p>Counts use the distributor credited in the CSV. Genie Music and Stone Music form the requested CJ ENM alliance; this is not a corporate ownership claim. International partnerships are not applied to unrelated recordings. Each song counts once per group, but may appear in multiple groups over time.</p>
+                  <div data-distribution-group-breakdown></div>
+                  <p><a href="data/distribution_groups.json">View mapping rules and research sources (reviewed September 14, 2026)</a></p>
+                </details>
+            </div></article>
+            <aside class="note-card longevity-commentary" tabindex="0" aria-label="Distribution agencies commentary"><div class="commentary-scroll" tabindex="0" role="region" aria-label="Scrollable commentary">
+              <p class="note-text">Similarly to the production agencies, four main players dominate the space: Kakao Entertainment, YG PLUS, Dreamus, and CJ ENM Alliance. The Top Distribution Agencies chart includes all distributors, including smaller corporations and international agreements with US companies, explaining the sharp cutoff after Dreamus. Kakao Entertainment is a subsidiary of Kakao which also owns SM. As a result they are the sole distributor for all SM songs. Coupled with other deals with other labels, Kakao Entertainment is the largest digital streaming distributor in Korea, maintaining about 38%. YG Plus maintains about 24% of the market and is the main distributor for YG and HYBE. In third is CJ ENM Alliance which is between 지미뮤직 and Stone Music Entertainment. Despite holding a larger market share than Dreamus, Dreamus is the main distributor for all JYP groups as well as ____ which are very popular, bringing them into third. </p>
+            </div></aside>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Interactive</div>
+              <h2 class="section-title">Artist mean-rank explorer</h2>
+            </div>
+          </div>
+          <p class="section-copy">This interactive chart allows a user to choose a year and a number of artists, highlighting the average rank of all the songs that were listed on Circle Chart for that year. Hovering over each point reveals the individual songs and their respective ranks.</p>
+          <article class="explorer-card explorer-shell" data-artist-explorer>
+            <div class="explorer-toolbar" data-controls></div>
+            <div data-list></div>
+            <div class="chart-grid">
+              <div class="explorer-chart-wrap"><div class="js-chart js-chart-explorer" data-chart></div></div>
+              <div class="side-detail" data-detail></div>
+            </div>
+          </article>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Interactive</div>
+              <h2 class="section-title">Song rank history explorer</h2>
+            </div>
+          </div>
+          <p class="section-copy">The song rank history explorer is another interactive chart. It allows a user to select an artist and a specific song, providing a line chart showcasing the rank of the song across the time it was on the chart. Hovering over each point reveals the specific rank of the song at that week. Multiple songs can be analyzed, including songs from different artists.</p>
+          <article class="explorer-card explorer-shell" data-song-explorer>
+            <div class="explorer-toolbar" data-toolbar></div>
+            <div data-song-list></div>
+            <div class="explorer-chart-wrap"><div class="js-chart js-chart-explorer" data-song-chart></div></div>
+          </article>
+        </section>
+
+        <section data-movement-tables>
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">Movement Tables</div>
+              <h2 class="section-title">Climbs and drops</h2>
+            </div>
+          </div>
+          <p>The two movement tables, Climbs and Drops, provide information on popularity of a song, monitored by its rank movement. Each table only displays 50 rows of data. The Climbs table returns the songs with the greatest increase in rank, taking the difference between a song’s rank between two succeeding weeks. The Drops table maintains similar logic to the Climbs table but looks for the greatest drop in rank. The information can be analyzed across the entire timeframe of the dataset or by year.</p>
+          <div class="table-toggle" data-table-toggle></div>
+          <div class="table-grid movement-grid" data-table-panels></div>
+        </section>
       </main>
 
     </div>
 
-    <script src="static/js/main.js"></script>
+    <script src="static/js/exploratory.js?v=movement-top-50-5"></script>
+    <script src="static/js/main.js?v=essentia-exploratory-1"></script>
   </body>
 </html>

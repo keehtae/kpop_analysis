@@ -110,7 +110,11 @@ function populateMusic(data) {
 async function init() {
   setActiveNav();
   const page = document.body.dataset.page;
-  if (!["home", "music", "exploratory"].includes(page)) {
+  if (page === "exploratory") {
+    if (window.initEssentiaExploratoryPage) await window.initEssentiaExploratoryPage();
+    return;
+  }
+  if (!["home", "music"].includes(page)) {
     return;
   }
 
@@ -125,15 +129,13 @@ async function init() {
 
   if (page === "home") {
     populateHome(data);
+    if (window.initExploratoryPage) window.initExploratoryPage(data);
   }
 
   if (page === "music") {
     populateMusic(data);
   }
 
-  if (page === "exploratory" && window.initExploratoryPage) {
-    window.initExploratoryPage(data);
-  }
 }
 
 init().catch((error) => {

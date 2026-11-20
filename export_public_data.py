@@ -91,6 +91,8 @@ def export_public_data(connection, output_dir=None, config_path=None):
                                        "column_count": len(included), "excluded_columns": omitted})
         from build_site_data import build_site_data
         build_site_data(staging / "rankings.json", staging / "site_data.json", output_dir)
+        from essentia_exploratory import build_exploratory_data
+        build_exploratory_data(staging / "essentia_and_rankings.json", staging / "essentia_exploratory.json")
         (staging / "manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
         )
@@ -98,6 +100,7 @@ def export_public_data(connection, output_dir=None, config_path=None):
         for item in manifest["tables"]:
             (staging / item["file"]).replace(output_dir / item["file"])
         (staging / "site_data.json").replace(output_dir / "site_data.json")
+        (staging / "essentia_exploratory.json").replace(output_dir / "essentia_exploratory.json")
         (staging / "manifest.json").replace(output_dir / "manifest.json")
     for item in manifest["tables"]:
         print(f"Public {item['table']}: {item['row_count']:,} rows, {item['column_count']} columns")
