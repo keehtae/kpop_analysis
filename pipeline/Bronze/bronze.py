@@ -292,7 +292,7 @@ def scrape_chart(playwright, connection, chart, table_name, start_year, end_year
 
 
 def main():
-    database_path = Path(__file__).resolve().parent / "data" / "Final_Project.duckdb"
+    database_path = Path(__file__).resolve().parents[2] / "data" / "Final_Project.duckdb"
     database_path.parent.mkdir(exist_ok=True)
     with duckdb.connect(str(database_path)) as connection, sync_playwright() as playwright:
         connection.execute("CREATE SCHEMA IF NOT EXISTS bronze")

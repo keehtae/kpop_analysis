@@ -49,7 +49,7 @@ def run_gold(connection):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path,
-                        default=Path(__file__).resolve().parent / "data/Final_Project.duckdb")
+                        default=Path(__file__).resolve().parents[2] / "data/Final_Project.duckdb")
     parser.add_argument("--export-public", action="store_true",
                         help="Also export the two Gold tables to docs/data without local paths")
     args = parser.parse_args(argv)

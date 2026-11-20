@@ -11,8 +11,8 @@ from pathlib import Path
 
 import duckdb
 
-from joined import add_join_arguments, join_options, run_joined
-from quality import apply_quality_rules, load_rules
+from pipeline.joined import add_join_arguments, join_options, run_joined
+from pipeline.Silver.quality import apply_quality_rules, load_rules
 
 
 TABLES = ("rankings", "social_score", "album_sales")
@@ -148,7 +148,7 @@ def main(argv=None):
     if bool(args.approve) != (args.artist is not None):
         parser.error("Use --approve TABLE ID together with --artist NAME.")
     base_dir = Path(__file__).resolve().parent
-    database_path = base_dir / "data" / "Final_Project.duckdb"
+    database_path = Path(__file__).resolve().parents[2] / "data" / "Final_Project.duckdb"
     if not database_path.is_file():
         raise FileNotFoundError(f"Run bronze.py first to create {database_path}")
     with duckdb.connect(str(database_path)) as connection:

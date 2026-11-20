@@ -23,7 +23,7 @@ import duckdb
 from openpyxl import load_workbook
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_ESSENTIA_ROOT = Path.home() / "Capstone test"
 FIELDS = ("song", "artist", "album")
 CHART_COLUMNS = ("year", "week", "rank", *FIELDS, "popularity_score", "label", "distributor")

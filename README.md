@@ -3,9 +3,9 @@
 Run the layers in order:
 
 ```sh
-python3 bronze.py
-python3 silver.py
-python3 gold.py
+python3 -m pipeline.Bronze.bronze
+python3 -m pipeline.Silver.silver
+python3 -m pipeline.Gold.gold
 ```
 
 The database is `data/Final_Project.duckdb`. Dependencies are `duckdb`,
@@ -44,8 +44,8 @@ Every file in the deployed website, including its JSON datasets, is public.
 Close any open DuckDB connection, then run:
 
 ```sh
-python3 silver.py
-python3 gold.py --export-public
+python3 -m pipeline.Silver.silver
+python3 -m pipeline.Gold.gold --export-public
 ```
 
 To export already-built Gold tables without rebuilding them:
