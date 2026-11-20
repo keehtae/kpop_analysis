@@ -785,6 +785,19 @@ body[data-page="home"] .stat-card .metric-value-weeks {
   min-width: 85px;
 }
 
+body[data-page="music"] .hero-copy {
+  min-height: 0;
+  padding: 24px;
+}
+
+body[data-page="music"] .hero-copy .lede {
+  max-width: none;
+}
+
+body[data-page="music"] .hero-copy .lede:last-child {
+  margin-bottom: 0;
+}
+
 body[data-page="music"] .hero-panel {
   justify-content: flex-start;
   gap: 18px;
