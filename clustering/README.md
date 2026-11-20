@@ -4,7 +4,7 @@ Two Python scripts replace the repeated notebook code:
 
 - `kmeans_model.py`: reusable `KMeansAnalysis` class for preparation, one-pass
   outlier filtering, scaling, K selection, model fitting and reports.
-- `models.py`: the three feature lists, optional K overrides and shared settings.
+- `models.py`: the three feature lists, optional K overrides and shared settings.a
 
 From the repository root:
 

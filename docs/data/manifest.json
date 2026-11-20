@@ -11,7 +11,7 @@
     {
       "table": "gold.essentia_and_rankings",
       "file": "essentia_and_rankings.json",
-      "row_count": 1051,
+      "row_count": 1075,
       "column_count": 402,
       "excluded_columns": [
         "file_path"
