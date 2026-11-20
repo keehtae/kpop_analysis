@@ -784,3 +784,20 @@ body[data-page="home"] .stat-card .metric-value-weeks {
 .audio-summary td:first-child {
   min-width: 85px;
 }
+
+body[data-page="music"] .hero-panel {
+  justify-content: flex-start;
+  gap: 18px;
+}
+
+.music-limitations-title {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: none;
+  margin: 0;
+}
+
+body[data-page="music"] .hero-panel .lede {
+  margin: 0;
+}

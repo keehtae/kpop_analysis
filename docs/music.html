@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music | K-pop Data Atlas</title>
-    <link rel="stylesheet" href="static/css/styles.css" />
+    <link rel="stylesheet" href="static/css/styles.css?v=music-content-1" />
   </head>
   <body data-page="music">
     <div class="site-shell">
@@ -31,80 +31,29 @@
             <h1 class="page-title">Music</h1>
             <p class="section-copy" data-dataset-summary></p>
             <p class="lede">
-              This page reframes the dataset for a music and roster audience. It keeps the same minimal, premium presentation as the home page,
-              but shifts the emphasis toward standout songs, repeat chart presence, and the agency infrastructure behind the results.
+              The popularity scores and other song metadata comes from Circle Chart, South Korea's national music chart. Specifically, the data comes from the digital chart which tracks domestic song popularity based on an aggregate of streaming, downloads, BGM (background music sales), and V coloring (video ringback tone usage). The information was scraped and loaded into a bronze layer table. Then the rows were filtered to only include Kpop groups.
+            </p>
+            <p class="lede">
+              For the sake of this analysis, a Kpop group is closely defined with idol culture in Korea. Choreography and fan engagement should be key components of these groups. As a result, groups such as 2am or Day6 are not included because they focus more on vocals and do not contain any dance elements. Additionally, sub-units of a Kpop group are not included. Any artist who leaves a Kpop group or maintains a separate solo artist career is not included; however, solos included as songs within albums from a Kpop group are included. For example, Up by Karina is a solo, but it was included in Synk: Parallel Line, an album released by the Kpop group Aespa. Moreoever, any song with a featuring is removed as well as any song containing a name of a producer in the title. Having a featured artist or specifying the producer may garner more popularity or curiousity from a broader audience. But for the sake of my analysis, I hope to limit popularity as much as possible to the audio characteristics of a group's song. Therefore, any external factors which may impact the popularity of a song is removed.
             </p>
           </article>
           <aside class="hero-panel">
-            <div class="metric-label">Editorial Angle</div>
-            <div class="metric-value">Songs / Artists / Agencies</div>
+            <h2 class="section-title music-limitations-title">Limitations and Future Direction</h2>
+            <p class="lede">
+              Social media, marketing, and album sales are not included as variables to help account for the popularity of a song. Future direction of this project hopes to integrate these elements to better isolate the impact of a song's audio characteristic on popularity.
+            </p>
           </aside>
         </section>
 
         <section>
           <div class="section-head">
             <div>
-              <div class="eyebrow">Standouts</div>
-              <h2 class="section-title">Songs with the longest chart life</h2>
-            </div>
-          </div>
-          <div class="chart-grid">
-            <article class="table-panel">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Song</th>
-                    <th>Artist</th>
-                    <th>Weeks</th>
-                  </tr>
-                </thead>
-                <tbody data-music-songs></tbody>
-              </table>
-            </article>
-            <aside class="note-card">
-              <div class="metric-label">Commentary Space</div>
-              <p class="note-text">
-                Write a music-facing interpretation here: which songs behaved like catalog staples, which ones had explosive launch windows,
-                and which artists seem to sustain attention across multiple release cycles.
-              </p>
-            </aside>
-          </div>
-        </section>
-
-        <section>
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Peak Control</div>
-              <h2 class="section-title">Songs that held rank #1</h2>
-            </div>
-          </div>
-          <article class="content-panel chart-card">
-            <div class="mini-list" data-music-number-ones></div>
-          </article>
-        </section>
-
-        <section>
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Infrastructure</div>
-              <h2 class="section-title">Agency footprint</h2>
-            </div>
-          </div>
-          <div class="detail-grid" data-music-agencies></div>
-        </section>
-
-        <section>
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Full Dataset</div>
-              <h2 class="section-title">Scrollable CSV browser</h2>
+              <h2 class="section-title">Full Dataset</h2>
             </div>
           </div>
           <article class="table-panel">
             <p class="section-copy">
-              This section surfaces the full CSV-derived dataset in a fixed-height viewport so roughly 30 rows are visible at once.
-              Scroll vertically for more records and horizontally for the wider column set.
+              The entire dataset from Circle Charts. Scroll down to see more rows.
             </p>
             <div class="table-scroll table-scroll-tall" data-music-dataset-scroll>
               <table class="data-table data-table-wide" data-music-dataset-table>
@@ -123,6 +72,6 @@
       </footer>
     </div>
 
-    <script src="static/js/main.js"></script>
+    <script src="static/js/main.js?v=music-content-1"></script>
   </body>
 </html>
