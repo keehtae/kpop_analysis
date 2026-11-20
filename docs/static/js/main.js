@@ -114,6 +114,10 @@ async function init() {
     if (window.initEssentiaExploratoryPage) await window.initEssentiaExploratoryPage();
     return;
   }
+  if (page === "models") {
+    if (window.initClusteringPage) await window.initClusteringPage();
+    return;
+  }
   if (!["home", "music"].includes(page)) {
     return;
   }

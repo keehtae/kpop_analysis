@@ -9,8 +9,8 @@ python3 -m pipeline.Gold.gold
 ```
 
 The database is `data/Final_Project.duckdb`. Dependencies are `duckdb`,
-`playwright` (Bronze), `PyYAML` and `openpyxl` (Silver), and `numpy` and `polars`
-for the public website's chart-data build.
+`playwright` (Bronze), `PyYAML` and `openpyxl` (Silver), and the packages in
+`clustering/requirements.txt` for the public website's chart-data build.
 
 This repository follows medallion architecture to retrieve, clean, and 
 prepare the data for analysis.

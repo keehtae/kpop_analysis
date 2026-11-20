@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Models | K-pop Data Atlas</title>
-    <link rel="stylesheet" href="static/css/styles.css" />
+    <title>Clustering Models | K-pop Data Atlas</title>
+    <link rel="stylesheet" href="static/css/styles.css?v=clustering-1" />
+    <script src="https://cdn.plot.ly/plotly-4.1.1.min.js" defer></script>
+    <script src="static/js/clustering.js?v=1" defer></script>
+    <script src="static/js/main.js?v=clustering-1" defer></script>
   </head>
   <body data-page="models">
     <div class="site-shell">
@@ -25,64 +28,332 @@
       </header>
 
       <main class="page-wrap">
-        <section class="hero">
-          <article class="hero-copy">
-            <div class="eyebrow">Modeling workspace</div>
-            <h1 class="page-title">Models</h1>
-            <p class="lede">
-              This page is set up as the modeling layer for the project. It follows the same gallery-like rhythm as the label reference sites,
-              but the content blocks are organized around forecasting, ranking, and survival-style questions you may want to test next.
-            </p>
-          </article>
-          <aside class="hero-panel">
-            <div class="metric-label">Suggested Scope</div>
-            <div class="metric-value">Forecast / Classify / Explain</div>
-          </aside>
+        <header class="model-page-head">
+          <h1 class="page-title">Clustering Models</h1>
+          <nav class="model-navigation" aria-label="Clustering models"><a href="#model-1">Model 1</a><a href="#model-2">Model 2</a><a href="#model-3">Model 3</a><a href="#model-comparison">Comparison</a></nav>
+        </header>
+        <section class="clustering-model" id="model-1" data-model="1">
+          <div class="section-head model-heading"><h2 class="section-title model-title">Model 1</h2>
+            <label class="model-control">Dataset<select data-control="dataset"><option value="all">All songs</option><option value="without_outliers">Without outliers</option></select></label>
+          </div>
+          <p class="section-copy model-features" data-model-features></p>
+          <p class="section-copy model-status" data-model-status role="status">Loading…</p>
+          <div class="model-results" hidden>
+            <div class="model-metrics" data-model-metrics></div>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Descriptive Statistics</h3><button type="button" class="model-download" data-download="descriptive">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="descriptive" ></table></div></article>
+              <!-- Model 1: add descriptive commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="descriptive commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Correlation Matrix</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card">
+                <div class="model-chart" data-chart="correlation" aria-label="Model 1 correlation matrix"></div>
+                <details class="model-details"><summary>Pair Correlations</summary><button type="button" class="model-download" data-download="correlation_pairs">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="correlation_pairs" ></table></div></details>
+              </article>
+              <!-- Model 1: add correlation commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="correlation commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Feature Distributions</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card">
+                <label class="model-control">Feature<select data-control="distribution-feature"></select></label>
+                <div class="model-chart" data-chart="histogram" aria-label="Model 1 feature histogram"></div>
+                <div class="model-chart model-short-chart" data-chart="boxplot" aria-label="Model 1 feature boxplot"></div>
+              </article>
+              <!-- Model 1: add distributions commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="distributions commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Plots</h3></div>
+              <article class="chart-card">
+                <div class="model-controls">
+                  <label class="model-control">Values<select data-control="scale"><option value="standardized">Standardized</option><option value="original">Original values</option></select></label>
+                  <label class="model-control">Color<select data-control="color"><option value="clusters">Clusters</option><option value="unclustered">Unclustered</option></select></label>
+                  <label class="model-control">Scatterplot<select data-control="pair"></select></label>
+                </div>
+                <p class="section-copy model-scale-note">K-means is fitted on standardized values. The values selector changes the plot coordinates only.</p>
+                <div class="model-paired-plots"><div class="model-chart model-scatter" data-chart="scatter3d" aria-label="Model 1 interactive 3D clusters"></div><div class="model-chart model-scatter" data-chart="scatter2d" aria-label="Model 1 pairwise scatterplot"></div></div>
+              </article>
+              <!-- Model 1: add scatterplots commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="scatterplots commentary"><p class="note-text"></p></aside>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">K Selection</h3><button type="button" class="model-download" data-download="diagnostics">Download CSV</button></div>
+              <article class="chart-card"><div class="model-diagnostics"><div class="model-chart model-short-chart" data-chart="inertia" aria-label="Model 1 inertia"></div><div class="model-chart model-short-chart" data-chart="silhouette" aria-label="Model 1 silhouette scores"></div><div class="model-chart model-short-chart" data-chart="davies_bouldin" aria-label="Model 1 Davies Bouldin scores"></div></div><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="diagnostics" ></table></div></article>
+              <!-- Model 1: add k selection commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="k selection commentary"><p class="note-text"></p></aside>
+            </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Counts by K</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card"><div class="model-chart model-counts" data-chart="candidate-sizes" aria-label="Model 1 cluster counts for each K"></div><details class="model-details"><summary>Cluster Counts Table</summary><button type="button" class="model-download" data-download="candidate_cluster_sizes">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="candidate_cluster_sizes" ></table></div></details></article>
+              <!-- Model 1: add cluster counts commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="cluster counts commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Profiles</h3></div>
+              <article class="chart-card"><div class="model-paired-plots"><div class="model-chart" data-chart="centroid-heatmap" aria-label="Model 1 standardized centroids"></div><div class="model-chart" data-chart="cluster-sizes" aria-label="Model 1 cluster sizes"></div></div></article>
+              <!-- Model 1: add cluster profiles commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster profiles commentary"><p class="note-text"></p></aside>
+            </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Cluster Summary</h3><button type="button" class="model-download" data-download="cluster_summary">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="cluster_summary" ></table></div></article>
+              <!-- Model 1: add cluster_summary commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster_summary commentary"><p class="note-text"></p></aside>
+          </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Centroids</h3><button type="button" class="model-download" data-download="centroids">Download CSV</button></div>
+            <article class="table-panel"><label class="model-control">Values<select data-control="centroid-scale"><option value="standardized">Standardized</option><option value="original">Original values</option></select></label><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="centroids" ></table></div></article>
+              <!-- Model 1: add centroids commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="centroids commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Feature Profiles</h3><button type="button" class="model-download" data-download="feature_profiles">Download CSV</button></div>
+              <article class="chart-card"><label class="model-control">Feature<select data-control="profile-feature"></select></label><div class="model-paired-plots"><div class="model-chart" data-chart="profile-density" aria-label="Model 1 cluster feature distributions"></div><div class="model-chart" data-chart="profile-boxes" aria-label="Model 1 feature boxplots by cluster"></div></div><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="feature_profiles" ></table></div></article>
+              <!-- Model 1: add feature profiles commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="feature profiles commentary"><p class="note-text"></p></aside>
+            </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Cluster Shape</h3><button type="button" class="model-download" data-download="cluster_shape">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="cluster_shape" ></table></div></article>
+              <!-- Model 1: add cluster_shape commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster_shape commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Song Assignments</h3><button type="button" class="model-download" data-download="assignments">Download CSV</button></div>
+              <article class="table-panel"><label class="model-control">Search<input type="search" data-control="search" placeholder="Song or artist" autocomplete="off"></label><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="assignments" ></table></div><div class="model-pagination"><button type="button" data-page="previous">Previous</button><span data-assignment-page role="status"></span><button type="button" data-page="next">Next</button></div></article>
+              <!-- Model 1: add assignments commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="assignments commentary"><p class="note-text"></p></aside>
+            </section>
+            <details class="model-details model-audit"><summary>Scaling and Outliers</summary>
+              <article class="table-panel"><h4>Scaling</h4><button type="button" class="model-download" data-download="scaling">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="scaling" ></table></div><h4>Outlier Fences</h4><button type="button" class="model-download" data-download="outlier_fences">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="outlier_fences" ></table></div><h4>Excluded Rows</h4><p class="section-copy" data-preprocessing></p><button type="button" class="model-download" data-download="removed_songs">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="removed_songs" ></table></div></article>
+              <!-- Model 1: add preprocessing commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="preprocessing commentary"><p class="note-text"></p></aside>
+            </details>
+          </div>
         </section>
-
-        <section>
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Candidate Tracks</div>
-              <h2 class="section-title">Three model directions</h2>
-            </div>
+        <section class="clustering-model" id="model-2" data-model="2">
+          <div class="section-head model-heading"><h2 class="section-title model-title">Model 2</h2>
+            <label class="model-control">Dataset<select data-control="dataset"><option value="all">All songs</option><option value="without_outliers">Without outliers</option></select></label>
           </div>
-          <div class="detail-grid">
-            <article class="detail-card">
-              <div class="metric-label">Longevity Model</div>
-              <p class="card-copy">
-                Predict total weeks on chart from early-week rank behavior, agency, release timing, and score momentum.
-              </p>
-            </article>
-            <article class="detail-card">
-              <div class="metric-label">Peak Rank Model</div>
-              <p class="card-copy">
-                Estimate whether a track will enter the top 10, top 3, or #1 using first-entry conditions and artist history.
-              </p>
-            </article>
-            <article class="detail-card">
-              <div class="metric-label">Volatility Model</div>
-              <p class="card-copy">
-                Model week-to-week movement magnitude to learn which songs are stable climbers versus event-driven spikes.
-              </p>
-            </article>
-            <article class="detail-card">
-              <div class="metric-label">Commentary Space</div>
-              <p class="card-copy">
-                Use this panel to describe features, train-test design, evaluation metrics, or why certain artists should be grouped together.
-              </p>
-            </article>
+          <p class="section-copy model-features" data-model-features></p>
+          <p class="section-copy model-status" data-model-status role="status">Loading…</p>
+          <div class="model-results" hidden>
+            <div class="model-metrics" data-model-metrics></div>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Descriptive Statistics</h3><button type="button" class="model-download" data-download="descriptive">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="descriptive" ></table></div></article>
+              <!-- Model 2: add descriptive commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="descriptive commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Correlation Matrix</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card">
+                <div class="model-chart" data-chart="correlation" aria-label="Model 2 correlation matrix"></div>
+                <details class="model-details"><summary>Pair Correlations</summary><button type="button" class="model-download" data-download="correlation_pairs">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="correlation_pairs" ></table></div></details>
+              </article>
+              <!-- Model 2: add correlation commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="correlation commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Feature Distributions</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card">
+                <label class="model-control">Feature<select data-control="distribution-feature"></select></label>
+                <div class="model-chart" data-chart="histogram" aria-label="Model 2 feature histogram"></div>
+                <div class="model-chart model-short-chart" data-chart="boxplot" aria-label="Model 2 feature boxplot"></div>
+              </article>
+              <!-- Model 2: add distributions commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="distributions commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Plots</h3></div>
+              <article class="chart-card">
+                <div class="model-controls">
+                  <label class="model-control">Values<select data-control="scale"><option value="standardized">Standardized</option><option value="original">Original values</option></select></label>
+                  <label class="model-control">Color<select data-control="color"><option value="clusters">Clusters</option><option value="unclustered">Unclustered</option></select></label>
+                  <label class="model-control">Scatterplot<select data-control="pair"></select></label>
+                </div>
+                <p class="section-copy model-scale-note">K-means is fitted on standardized values. The values selector changes the plot coordinates only.</p>
+                <div class="model-paired-plots"><div class="model-chart model-scatter" data-chart="scatter3d" aria-label="Model 2 interactive 3D clusters"></div><div class="model-chart model-scatter" data-chart="scatter2d" aria-label="Model 2 pairwise scatterplot"></div></div>
+              </article>
+              <!-- Model 2: add scatterplots commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="scatterplots commentary"><p class="note-text"></p></aside>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">K Selection</h3><button type="button" class="model-download" data-download="diagnostics">Download CSV</button></div>
+              <article class="chart-card"><div class="model-diagnostics"><div class="model-chart model-short-chart" data-chart="inertia" aria-label="Model 2 inertia"></div><div class="model-chart model-short-chart" data-chart="silhouette" aria-label="Model 2 silhouette scores"></div><div class="model-chart model-short-chart" data-chart="davies_bouldin" aria-label="Model 2 Davies Bouldin scores"></div></div><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="diagnostics" ></table></div></article>
+              <!-- Model 2: add k selection commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="k selection commentary"><p class="note-text"></p></aside>
+            </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Counts by K</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card"><div class="model-chart model-counts" data-chart="candidate-sizes" aria-label="Model 2 cluster counts for each K"></div><details class="model-details"><summary>Cluster Counts Table</summary><button type="button" class="model-download" data-download="candidate_cluster_sizes">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="candidate_cluster_sizes" ></table></div></details></article>
+              <!-- Model 2: add cluster counts commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="cluster counts commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Profiles</h3></div>
+              <article class="chart-card"><div class="model-paired-plots"><div class="model-chart" data-chart="centroid-heatmap" aria-label="Model 2 standardized centroids"></div><div class="model-chart" data-chart="cluster-sizes" aria-label="Model 2 cluster sizes"></div></div></article>
+              <!-- Model 2: add cluster profiles commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster profiles commentary"><p class="note-text"></p></aside>
+            </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Cluster Summary</h3><button type="button" class="model-download" data-download="cluster_summary">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="cluster_summary" ></table></div></article>
+              <!-- Model 2: add cluster_summary commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster_summary commentary"><p class="note-text"></p></aside>
+          </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Centroids</h3><button type="button" class="model-download" data-download="centroids">Download CSV</button></div>
+            <article class="table-panel"><label class="model-control">Values<select data-control="centroid-scale"><option value="standardized">Standardized</option><option value="original">Original values</option></select></label><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="centroids" ></table></div></article>
+              <!-- Model 2: add centroids commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="centroids commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Feature Profiles</h3><button type="button" class="model-download" data-download="feature_profiles">Download CSV</button></div>
+              <article class="chart-card"><label class="model-control">Feature<select data-control="profile-feature"></select></label><div class="model-paired-plots"><div class="model-chart" data-chart="profile-density" aria-label="Model 2 cluster feature distributions"></div><div class="model-chart" data-chart="profile-boxes" aria-label="Model 2 feature boxplots by cluster"></div></div><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="feature_profiles" ></table></div></article>
+              <!-- Model 2: add feature profiles commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="feature profiles commentary"><p class="note-text"></p></aside>
+            </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Cluster Shape</h3><button type="button" class="model-download" data-download="cluster_shape">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="cluster_shape" ></table></div></article>
+              <!-- Model 2: add cluster_shape commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster_shape commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Song Assignments</h3><button type="button" class="model-download" data-download="assignments">Download CSV</button></div>
+              <article class="table-panel"><label class="model-control">Search<input type="search" data-control="search" placeholder="Song or artist" autocomplete="off"></label><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="assignments" ></table></div><div class="model-pagination"><button type="button" data-page="previous">Previous</button><span data-assignment-page role="status"></span><button type="button" data-page="next">Next</button></div></article>
+              <!-- Model 2: add assignments commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="assignments commentary"><p class="note-text"></p></aside>
+            </section>
+            <details class="model-details model-audit"><summary>Scaling and Outliers</summary>
+              <article class="table-panel"><h4>Scaling</h4><button type="button" class="model-download" data-download="scaling">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="scaling" ></table></div><h4>Outlier Fences</h4><button type="button" class="model-download" data-download="outlier_fences">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="outlier_fences" ></table></div><h4>Excluded Rows</h4><p class="section-copy" data-preprocessing></p><button type="button" class="model-download" data-download="removed_songs">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="removed_songs" ></table></div></article>
+              <!-- Model 2: add preprocessing commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="preprocessing commentary"><p class="note-text"></p></aside>
+            </details>
           </div>
+        </section>
+        <section class="clustering-model" id="model-3" data-model="3">
+          <div class="section-head model-heading"><h2 class="section-title model-title">Model 3</h2>
+            <label class="model-control">Dataset<select data-control="dataset"><option value="all">All songs</option><option value="without_outliers">Without outliers</option></select></label>
+          </div>
+          <p class="section-copy model-features" data-model-features></p>
+          <p class="section-copy model-status" data-model-status role="status">Loading…</p>
+          <div class="model-results" hidden>
+            <div class="model-metrics" data-model-metrics></div>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Descriptive Statistics</h3><button type="button" class="model-download" data-download="descriptive">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="descriptive" ></table></div></article>
+              <!-- Model 3: add descriptive commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="descriptive commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Correlation Matrix</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card">
+                <div class="model-chart" data-chart="correlation" aria-label="Model 3 correlation matrix"></div>
+                <details class="model-details"><summary>Pair Correlations</summary><button type="button" class="model-download" data-download="correlation_pairs">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="correlation_pairs" ></table></div></details>
+              </article>
+              <!-- Model 3: add correlation commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="correlation commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Feature Distributions</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card">
+                <label class="model-control">Feature<select data-control="distribution-feature"></select></label>
+                <div class="model-chart" data-chart="histogram" aria-label="Model 3 feature histogram"></div>
+                <div class="model-chart model-short-chart" data-chart="boxplot" aria-label="Model 3 feature boxplot"></div>
+              </article>
+              <!-- Model 3: add distributions commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="distributions commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Plots</h3></div>
+              <article class="chart-card">
+                <div class="model-controls">
+                  <label class="model-control">Values<select data-control="scale"><option value="standardized">Standardized</option><option value="original">Original values</option></select></label>
+                  <label class="model-control">Color<select data-control="color"><option value="clusters">Clusters</option><option value="unclustered">Unclustered</option></select></label>
+                  <label class="model-control">Scatterplot<select data-control="pair"></select></label>
+                </div>
+                <p class="section-copy model-scale-note">K-means is fitted on standardized values. The values selector changes the plot coordinates only.</p>
+                <div class="model-paired-plots"><div class="model-chart model-scatter" data-chart="scatter3d" aria-label="Model 3 interactive 3D clusters"></div><div class="model-chart model-scatter" data-chart="scatter2d" aria-label="Model 3 pairwise scatterplot"></div></div>
+              </article>
+              <!-- Model 3: add scatterplots commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="scatterplots commentary"><p class="note-text"></p></aside>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">K Selection</h3><button type="button" class="model-download" data-download="diagnostics">Download CSV</button></div>
+              <article class="chart-card"><div class="model-diagnostics"><div class="model-chart model-short-chart" data-chart="inertia" aria-label="Model 3 inertia"></div><div class="model-chart model-short-chart" data-chart="silhouette" aria-label="Model 3 silhouette scores"></div><div class="model-chart model-short-chart" data-chart="davies_bouldin" aria-label="Model 3 Davies Bouldin scores"></div></div><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="diagnostics" ></table></div></article>
+              <!-- Model 3: add k selection commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="k selection commentary"><p class="note-text"></p></aside>
+            </section>
+            <section class="model-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Counts by K</h3></div>
+              <div class="chart-grid model-chart-grid"><article class="chart-card"><div class="model-chart model-counts" data-chart="candidate-sizes" aria-label="Model 3 cluster counts for each K"></div><details class="model-details"><summary>Cluster Counts Table</summary><button type="button" class="model-download" data-download="candidate_cluster_sizes">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="candidate_cluster_sizes" ></table></div></details></article>
+              <!-- Model 3: add cluster counts commentary in the paragraph below. -->
+              <aside class="note-card model-commentary" aria-label="cluster counts commentary"><p class="note-text"></p></aside>
+              </div>
+            </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Cluster Profiles</h3></div>
+              <article class="chart-card"><div class="model-paired-plots"><div class="model-chart" data-chart="centroid-heatmap" aria-label="Model 3 standardized centroids"></div><div class="model-chart" data-chart="cluster-sizes" aria-label="Model 3 cluster sizes"></div></div></article>
+              <!-- Model 3: add cluster profiles commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster profiles commentary"><p class="note-text"></p></aside>
+            </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Cluster Summary</h3><button type="button" class="model-download" data-download="cluster_summary">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="cluster_summary" ></table></div></article>
+              <!-- Model 3: add cluster_summary commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster_summary commentary"><p class="note-text"></p></aside>
+          </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Centroids</h3><button type="button" class="model-download" data-download="centroids">Download CSV</button></div>
+            <article class="table-panel"><label class="model-control">Values<select data-control="centroid-scale"><option value="standardized">Standardized</option><option value="original">Original values</option></select></label><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="centroids" ></table></div></article>
+              <!-- Model 3: add centroids commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="centroids commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Feature Profiles</h3><button type="button" class="model-download" data-download="feature_profiles">Download CSV</button></div>
+              <article class="chart-card"><label class="model-control">Feature<select data-control="profile-feature"></select></label><div class="model-paired-plots"><div class="model-chart" data-chart="profile-density" aria-label="Model 3 cluster feature distributions"></div><div class="model-chart" data-chart="profile-boxes" aria-label="Model 3 feature boxplots by cluster"></div></div><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="feature_profiles" ></table></div></article>
+              <!-- Model 3: add feature profiles commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="feature profiles commentary"><p class="note-text"></p></aside>
+            </section>
+          <section class="model-output model-wide-output">
+            <div class="section-head"><h3 class="section-title model-output-title">Cluster Shape</h3><button type="button" class="model-download" data-download="cluster_shape">Download CSV</button></div>
+            <article class="table-panel"><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="cluster_shape" ></table></div></article>
+              <!-- Model 3: add cluster_shape commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="cluster_shape commentary"><p class="note-text"></p></aside>
+          </section>
+            <section class="model-output model-wide-output">
+              <div class="section-head"><h3 class="section-title model-output-title">Song Assignments</h3><button type="button" class="model-download" data-download="assignments">Download CSV</button></div>
+              <article class="table-panel"><label class="model-control">Search<input type="search" data-control="search" placeholder="Song or artist" autocomplete="off"></label><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="assignments" ></table></div><div class="model-pagination"><button type="button" data-page="previous">Previous</button><span data-assignment-page role="status"></span><button type="button" data-page="next">Next</button></div></article>
+              <!-- Model 3: add assignments commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="assignments commentary"><p class="note-text"></p></aside>
+            </section>
+            <details class="model-details model-audit"><summary>Scaling and Outliers</summary>
+              <article class="table-panel"><h4>Scaling</h4><button type="button" class="model-download" data-download="scaling">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="scaling" ></table></div><h4>Outlier Fences</h4><button type="button" class="model-download" data-download="outlier_fences">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="outlier_fences" ></table></div><h4>Excluded Rows</h4><p class="section-copy" data-preprocessing></p><button type="button" class="model-download" data-download="removed_songs">Download CSV</button><div class="table-scroll table-scroll-medium model-table-scroll"><table class="data-table" data-model-table="removed_songs" ></table></div></article>
+              <!-- Model 3: add preprocessing commentary in the paragraph below. -->
+              <aside class="note-card model-commentary model-commentary-below" aria-label="preprocessing commentary"><p class="note-text"></p></aside>
+            </details>
+          </div>
+        </section>
+        <section class="model-output model-wide-output" id="model-comparison">
+          <div class="section-head"><h2 class="section-title model-title">Model Comparison</h2><button type="button" class="model-download" id="download-comparison">Download CSV</button></div>
+          <article class="table-panel"><div class="table-scroll"><table class="data-table" id="model-comparison-table"></table></div></article>
+          <!-- Add model comparison commentary in the paragraph below. -->
+          <aside class="note-card model-commentary model-commentary-below" aria-label="Model comparison commentary"><p class="note-text"></p></aside>
         </section>
       </main>
-
-      <footer class="site-footer">
-        <div class="footer-panel">
-          This page is intentionally structured for future model outputs and explanatory writeups.
-        </div>
-      </footer>
     </div>
-
-    <script src="static/js/main.js"></script>
   </body>
 </html>

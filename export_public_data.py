@@ -93,6 +93,8 @@ def export_public_data(connection, output_dir=None, config_path=None):
         build_site_data(staging / "rankings.json", staging / "site_data.json", output_dir)
         from essentia_exploratory import build_exploratory_data
         build_exploratory_data(staging / "essentia_and_rankings.json", staging / "essentia_exploratory.json")
+        from clustering.models import build_clustering_data
+        build_clustering_data(staging / "essentia_and_rankings.json", staging / "clustering")
         (staging / "manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
         )
@@ -101,6 +103,9 @@ def export_public_data(connection, output_dir=None, config_path=None):
             (staging / item["file"]).replace(output_dir / item["file"])
         (staging / "site_data.json").replace(output_dir / "site_data.json")
         (staging / "essentia_exploratory.json").replace(output_dir / "essentia_exploratory.json")
+        (output_dir / "clustering").mkdir(exist_ok=True)
+        for path in (staging / "clustering").iterdir():
+            path.replace(output_dir / "clustering" / path.name)
         (staging / "manifest.json").replace(output_dir / "manifest.json")
     for item in manifest["tables"]:
         print(f"Public {item['table']}: {item['row_count']:,} rows, {item['column_count']} columns")
